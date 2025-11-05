@@ -1,12 +1,340 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link href="/src/style.css" rel="stylesheet" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Agenda App</title>
   </head>
-  <body>
-    <nav><a</nav>
+  <body class="h-screen w-full overflow-hidden bg-neutral-800 text-white">
+    <header
+      class="z-50 flex h-20 w-full border-b-2 border-white bg-neutral-900 text-xl"
+    >
+      <nav
+        class="flex w-screen items-center justify-center space-x-16 text-center font-medium"
+      >
+        <a href="#Imagen">Inicio</a>
+        <a href="#Tareas">Tareas</a>
+        <a href="#Tiempo">Tiempo</a>
+        <a href="#Noticias">Noticias</a>
+        <a href="#Calendario">Calendario</a>
+        <a href="#Temporizador">Temporizador</a>
+      </nav>
+
+      <div class="mx-auto mt-2 mr-10 items-center justify-center">
+        <p id="fecha">Fecha</p>
+        <p class="text-center" id="hora">Hora</p>
+      </div>
+    </header>
+    <button
+      id="scrollIzq"
+      class="fixed top-1/2 left-4 z-50 -translate-y-1/2 cursor-pointer rounded-full border-2 border-white p-2 text-black"
+    >
+      ◀
+    </button>
+
+    <button
+      id="scrollDer"
+      class="fixed top-1/2 right-4 z-50 -translate-y-1/2 cursor-pointer rounded-full border-2 border-white p-2 text-black"
+    >
+      ▶
+    </button>
+    <main
+      class="scroll-snap-x scroll-snap-mandatory flex h-[calc(100vh-5rem)] w-screen overflow-x-auto overflow-y-hidden scroll-smooth"
+    >
+      <section
+        id="Imagen"
+        class="flex h-[calc(100vh-5rem)] w-screen flex-none snap-start flex-col overflow-hidden bg-cover object-contain"
+      >
+        <h1 class="mx-auto mt-12 justify-center text-5xl text-black">
+          ¡Bienvenido a tu agenda!
+        </h1>
+        <p id="motivate" class="mx-auto mt-10 rounded bg-white p-1 text-black">
+          Cargando...
+        </p>
+        <button
+          id="actualizar"
+          class="mx-auto mt-1 cursor-pointer rounded-2xl bg-white p-2 text-black hover:bg-amber-300"
+        >
+          Nueva Frase
+        </button>
+      </section>
+      <section
+        id="Tareas"
+        class="h-[calc(100vh-5rem)] w-screen flex-none snap-start overflow-y-auto"
+      >
+        <h1 class="mt-3.5 items-center justify-center text-center text-4xl">
+          TAREAS
+        </h1>
+        <form
+          class="mt-5 flex flex-col items-center justify-center text-center"
+        >
+          <input
+            id="Tarea"
+            type="text"
+            placeholder="escribe aqui tu tarea"
+            class="flex w-4/5 items-center justify-center border-2 border-white text-center"
+          />
+          <button
+            id="GuardarTarea"
+            class="mt-2 w-1/5 cursor-pointer rounded border-2 border-white p-0.5 hover:bg-black"
+          >
+            Añadir Tarea
+          </button>
+        </form>
+        <div>
+          <h1 class="mt-5 mb-2 text-center text-2xl text-white">
+            Tareas por Hacer
+          </h1>
+          <table
+            class="mx-auto mt-5 w-4/5 items-center justify-center text-center"
+          >
+            <colgroup>
+              <col class="w-3/5" />
+              <col class="w-1/5" />
+              <col class="w-1/5" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th>Tarea</th>
+                <th>Fecha/Hora</th>
+                <th>Acabar</th>
+              </tr>
+            </thead>
+            <tbody id="cuerpoTabla1">
+              <tr></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h1 class="mt-5 mb-2 text-center text-2xl text-white">
+            Tareas Acabadas
+          </h1>
+          <table
+            class="mx-auto mt-5 w-4/5 items-center justify-center text-center"
+          >
+            <colgroup>
+              <col class="w-3/5" />
+              <col class="w-1/5" />
+              <col class="w-1/5" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th>Tarea</th>
+                <th>Fecha Hora</th>
+                <th>Eliminar</th>
+              </tr>
+            </thead>
+            <tbody id="cuerpoTabla2">
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section
+        id="Tiempo"
+        class="h-[calc(100vh-5rem)] w-screen flex-none snap-start"
+      >
+        <form
+          class="mx-auto mt-10 flex flex-col items-center justify-center text-center"
+        >
+          <input
+            id="ciudadBuscar"
+            type="text"
+            placeholder="Consulta el tiempo en tu ciudad"
+            class="w-4/5 border-2 border-white text-center"
+          />
+          <button
+            id="botonBuscarTiempo"
+            class="mt-2 cursor-pointer flex-col rounded-2xl bg-blue-500 p-2 text-center"
+          >
+            Dime el Tiempo
+          </button>
+        </form>
+
+        <div
+          id="fondoClima"
+          class="mx-auto mt-10 flex h-3/5 w-4/5 rounded-2xl border-2 border-white"
+        >
+          <div class="mt-4 ml-17 flex w-1/5 flex-col items-start text-2xl">
+            <p id="icono"></p>
+            <p><span id="temperatura" class="text-6xl"></span></p>
+            <p>
+              <span
+                id="nombreCiudad"
+                class="mt-5 text-4xl first-letter:uppercase"
+              ></span>
+            </p>
+            <p id="descripcion"></p>
+          </div>
+          <div class="mr-75 ml-auto flex items-center justify-end space-x-30">
+            <div class="space-y-15">
+              <p>
+                Sensacion termica:&nbsp;<span id="sensacion">sensacion</span>
+              </p>
+
+              <p>Humedad:&nbsp;<span id="humedad">humedad</span></p>
+              <p>
+                Velocidad del viento:&nbsp;<span id="viento">Velocidad</span>
+              </p>
+              <p>Nubosidad:&nbsp;<span id="nubes">nubes</span></p>
+            </div>
+            <div class="space-y-15">
+              <p>Salida del Sol:&nbsp;<span id="salidaSol"></span></p>
+              <p>Puesta de sol:&nbsp;<span id="puestaSol"></span></p>
+              <p>Nivel del Mar:&nbsp;<span id="nivelMar"></span></p>
+              <p>Visibilidad:&nbsp;<span id="visibilidad"></span></p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+        id="Noticias"
+        class="h-[calc(100vh-5rem)] w-screen flex-none snap-start overflow-y-auto"
+      >
+        <h1 class="mx-auto mt-5 text-center text-5xl">Noticias</h1>
+        <nav
+          class="sticky top-0 mx-auto mt-2 w-fit space-x-6 rounded border-1 border-white bg-black p-2 text-center"
+        >
+          <a href="#Actualidad">Actualidad</a>
+          <a href="#Deportes">Deportes</a>
+        </nav>
+        <button
+          id="botonActualizar"
+          class="mx-auto mt-2 flex cursor-pointer items-center justify-center rounded bg-blue-900 p-2 text-center text-white"
+        >
+          Actualizar Noticias
+        </button>
+        <article
+          class="mx-auto mt-10 w-4/5 items-center justify-center space-x-4 text-center"
+        >
+          <h1 id="Actualidad" class="mt-5 mb-2 text-center text-4xl">
+            Actualidad
+          </h1>
+          <div
+            id="actualidad"
+            class="mx-auto w-4/5 flex-col overflow-y-auto p-2"
+          ></div>
+          <h1 id="Deportes" class="mb-2 text-center text-4xl">Deportes</h1>
+          <div
+            id="deportes"
+            class="mx-auto w-4/5 flex-col overflow-y-auto p-2"
+          ></div>
+        </article>
+      </section>
+      <section
+        id="Calendario"
+        class="h-[calc(100vh-5rem)] w-screen flex-none snap-start"
+      >
+        <div
+          id="calendar"
+          class="mx-auto mt-10 h-10/12 w-4/5 justify-center"
+        ></div>
+      </section>
+      <section
+        id="Temporizador"
+        class="h-[calc(100vh-5rem)] w-screen flex-none snap-start"
+      >
+        <div class="container">
+          <h1 class="mx-auto mt-10 text-center text-2xl">
+            Cronómetro y Temporizador
+          </h1>
+
+          <!-- cronometro  -->
+          <div
+            class="mx-auto mt-5 flex w-3/5 flex-col items-center justify-center space-y-3 border-2 border-orange-500 bg-black text-center"
+          >
+            <h2
+              class="mx-auto mt-2 flex items-start justify-items-start text-xl"
+            >
+              Cronómetro
+            </h2>
+            <div
+              id="cronometro"
+              class="mt-2 flex items-center justify-center text-3xl"
+            >
+              00:00:00
+            </div>
+            <div class="mb-5">
+              <button
+                id="startCronometro"
+                class="cursor-pointer rounded-2xl border-1 border-b-orange-500 p-3 transition duration-300 hover:-translate-y-1 hover:bg-orange-500"
+              >
+                Iniciar
+              </button>
+              <button
+                id="pauseCronometro"
+                class="cursor-pointer rounded-2xl border-1 border-b-orange-500 p-3 transition duration-300 hover:-translate-y-1 hover:bg-orange-500"
+              >
+                Pausar
+              </button>
+              <button
+                id="resetCronometro"
+                class="cursor-pointer rounded-2xl border-1 border-b-orange-500 p-3 transition duration-300 hover:-translate-y-1 hover:bg-orange-500"
+              >
+                Restablecer
+              </button>
+            </div>
+          </div>
+
+          <!-- Temporizador  -->
+          <div
+            class="mx-auto mt-5 flex w-3/5 flex-col items-center justify-center space-y-3 border-2 border-orange-500 bg-black text-center"
+          >
+            <h2 class="mt-3 text-xl">Temporizador</h2>
+            <div
+              id="temporizador"
+              class="mt-2 flex items-center justify-center text-3xl"
+            >
+              00:00:00
+            </div>
+            <div>
+              <label for="timeInput">Configura el tiempo (minutos):</label>
+              <input
+                class="border-1 border-b-orange-500 text-center"
+                type="number"
+                id="timeInput"
+                min="1"
+                value="1"
+              />
+            </div>
+            <div class="mb-5">
+              <button
+                id="startTemporizador"
+                class="cursor-pointer rounded-2xl border-1 border-b-orange-500 p-3 transition duration-300 hover:-translate-y-1 hover:bg-orange-500"
+              >
+                Iniciar
+              </button>
+              <button
+                id="pauseTemporizador"
+                class="cursor-pointer rounded-2xl border-1 border-b-orange-500 p-3 transition duration-300 hover:-translate-y-1 hover:bg-orange-500"
+              >
+                Pausar
+              </button>
+              <button
+                id="resetTemporizador"
+                class="cursor-pointer rounded-2xl border-1 border-b-orange-500 p-3 transition duration-300 hover:-translate-y-1 hover:bg-orange-500"
+              >
+                Restablecer
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <script type="module" src="./src/tareas/tareas.js"></script>
+      <script type="module" src="./src/inicio/fechaHora.js"></script>
+      <script type="module" src="./src/inicio/scroll.js"></script>
+      <script type="module" src="./src/tiempo/tiempoApi.js"></script>
+      <script type="module" src="./src/motivate/motivate.js"></script>
+      <script type="module" src="./src/noticias/noticias.js"></script>
+      <script type="module" src="./src/calendario/calendario.js"></script>
+      <script type="module" src="./src/temporizador/temporizador.js"></script>
+    </main>
   </body>
 </html>

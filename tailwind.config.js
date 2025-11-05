@@ -5,5 +5,6 @@ export default {
         brand: "#1E40AF",
       },
     },
+    plugins: [daisyui],
   },
 };
