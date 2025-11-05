@@ -75,19 +75,25 @@ const recuperarActualidad = async () => {
   document.getElementById("actualidad").innerHTML = "";
   resultado.forEach((element) => {
     const noticia = document.createElement("article");
-    noticia.className = "  p-2 mb-2";
+    noticia.className = "p-2 mb-2 w-full sm:w-4/5 lg:w-3/5 mx-auto";
     const titulo = document.createElement("h3");
     titulo.textContent = element.title;
-    titulo.className = "text-3xl text-center";
+    titulo.className = "text-xl sm:text-2xl md:text-3xl text-center mb-2 px-2";
     const fotoNoticia = document.createElement("img");
     fotoNoticia.src = element.image_url;
-    fotoNoticia.className = "w-4/5 h-100 items-center mx-auto";
+    fotoNoticia.className =
+      "w-full sm:w-4/5 h-auto object-cover items-center mx-auto rounded-md";
     const descripcion = document.createElement("p");
     descripcion.textContent = element.description;
-    descripcion.className = "w-4/5 text-center mx-auto items-center ";
+    descripcion.className =
+      "w-full sm:w-4/5 text-start mx-auto items-center text-sm sm:text-base px-2";
+    const rallaAbajo = document.createElement("hr");
+    rallaAbajo.className = "w-fix mt-2";
     noticia.appendChild(titulo);
     noticia.appendChild(fotoNoticia);
     noticia.appendChild(descripcion);
+    noticia.appendChild(rallaAbajo);
+
     document.getElementById("actualidad").appendChild(noticia);
   });
 };
@@ -102,16 +108,18 @@ const recuperarDeportes = async () => {
   document.getElementById("deportes").innerHTML = "";
   guardadas.forEach((element) => {
     const noticia = document.createElement("article");
-    noticia.className = " p-2 mb-2";
+    noticia.className = "p-2 mb-2 w-full sm:w-4/5 lg:w-3/5 mx-auto";
     const titulo = document.createElement("h3");
-    titulo.className = "text-3xl text-center";
+    titulo.className = "text-xl sm:text-2xl md:text-3xl text-center mb-2 px-2";
     titulo.textContent = element.title;
     const fotoNoticia = document.createElement("img");
     fotoNoticia.src = element.image_url;
-    fotoNoticia.className = "w-4/5 h-100 items-center mx-auto mt-5 mb-5";
+    fotoNoticia.className =
+      "w-full sm:w-4/5 h-auto object-cover items-center mx-auto rounded-md";
     const descripcion = document.createElement("p");
     descripcion.textContent = element.description;
-    descripcion.className = "text-start ";
+    descripcion.className =
+      "w-full sm:w-4/5 text-start mx-auto items-center text-sm sm:text-base px-2";
     noticia.appendChild(titulo);
     noticia.appendChild(fotoNoticia);
     noticia.appendChild(descripcion);

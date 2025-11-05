@@ -43,3 +43,29 @@ document.addEventListener("keydown", (event) => {
     });
   }
 });
+
+// const toggle = document.getElementById("menu-toggle");
+// const menu = document.getElementById("menu");
+
+// toggle.addEventListener("click", () => {
+//   menu.classList.toggle("hidden");
+//   menu.classList.toggle("-translate-x-full");
+// });
+
+const toggle = document.getElementById("menu-toggle");
+const menu = document.getElementById("menu");
+const links = document.querySelectorAll(".menu-link");
+
+toggle.addEventListener("click", () => {
+  menu.classList.toggle("hidden");
+  menu.classList.toggle("-translate-x-full");
+});
+
+links.forEach((link) => {
+  link.addEventListener("click", () => {
+    if (window.innerWidth < 640) {
+      menu.classList.add("hidden");
+      menu.classList.add("-translate-x-full");
+    }
+  });
+});

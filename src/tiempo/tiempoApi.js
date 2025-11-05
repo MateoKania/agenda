@@ -25,7 +25,7 @@ async function buscarClima() {
 
   nombreCiudad.textContent = primeraMayus(cogerCiudad);
   document.getElementById("temperatura").textContent =
-    " " + data.main.temp + " °C";
+    " " + data.main.temp + "ºC";
   document.getElementById("sensacion").textContent =
     data.main.feels_like + " °C";
   document.getElementById("humedad").textContent = data.main.humidity + " %";

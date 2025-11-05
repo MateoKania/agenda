@@ -16,15 +16,18 @@ document.addEventListener("DOMContentLoaded", function () {
     editable: true,
 
     headerToolbar: {
-      left: "prev,next today,prevYear",
+      left: "prev,next",
       center: "title",
-      right: "nextYear,dayGridMonth,dayGridWeek",
+      right: "dayGridMonth,dayGridWeek",
     },
+
     buttonText: {
       prevYear: "Año -",
       nextYear: "Año +",
-      prev: "Mes/Sem -",
-      next: "Mes/Sem +",
+      prev: "-",
+      next: "+",
+      dayGridWeek: "Sem",
+      dayGridMonth: "Mes",
     },
 
     firstDay: 1,
