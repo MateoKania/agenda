@@ -7,7 +7,7 @@ function guardarAlRecargar() {
   localStorage.setItem("guardarCiudad", inputCiudad.value);
 }
 
-async function buscarClima() {
+async function buscarClima(event) {
   const cogerCiudad = inputCiudad.value.toLowerCase();
   guardarAlRecargar();
 
@@ -97,7 +97,12 @@ async function buscarClima() {
   inputCiudad.value = "";
 }
 
-botonBuscar.addEventListener("click", buscarClima);
+botonBuscar.addEventListener("click", function (e) {
+  if ("click") {
+    buscarClima();
+    e.preventDefault();
+  }
+});
 inputCiudad.addEventListener("keydown", function (e) {
   const boton = e.key === "Enter";
   if (boton) {

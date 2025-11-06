@@ -1,7 +1,7 @@
 const tarea = document.getElementById("Tarea");
 const botonAñadir = document.getElementById("GuardarTarea");
 
-const tareaGuardada = botonAñadir.addEventListener("click", function () {
+const tareaGuardada = botonAñadir.addEventListener("click", function (event) {
   const texto = tarea.value;
   const ahora = new Date();
   const fechaHora = ahora.toLocaleString();
@@ -86,7 +86,7 @@ const tareaGuardada = botonAñadir.addEventListener("click", function () {
   fila.appendChild(celdaBoton);
   document.getElementById("cuerpoTabla1").appendChild(fila);
   tarea.value = "";
-  preventDefault();
+  event.preventDefault();
 });
 
 function mostrarTareasGuardadas() {
