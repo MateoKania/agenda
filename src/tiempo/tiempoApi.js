@@ -98,6 +98,13 @@ async function buscarClima() {
 }
 
 botonBuscar.addEventListener("click", buscarClima);
+inputCiudad.addEventListener("keydown", function (e) {
+  const boton = e.key === "Enter";
+  if (boton) {
+    buscarClima();
+    e.preventDefault();
+  }
+});
 
 async function recuperarAlRecargar() {
   const ciudadGuardada = localStorage.getItem("guardarCiudad");

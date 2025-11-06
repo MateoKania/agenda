@@ -86,6 +86,7 @@ const tareaGuardada = botonAñadir.addEventListener("click", function () {
   fila.appendChild(celdaBoton);
   document.getElementById("cuerpoTabla1").appendChild(fila);
   tarea.value = "";
+  preventDefault();
 });
 
 function mostrarTareasGuardadas() {
