@@ -44,14 +44,6 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-// const toggle = document.getElementById("menu-toggle");
-// const menu = document.getElementById("menu");
-
-// toggle.addEventListener("click", () => {
-//   menu.classList.toggle("hidden");
-//   menu.classList.toggle("-translate-x-full");
-// });
-
 const toggle = document.getElementById("menu-toggle");
 const menu = document.getElementById("menu");
 const links = document.querySelectorAll(".menu-link");

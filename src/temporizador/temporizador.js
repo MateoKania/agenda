@@ -1,9 +1,7 @@
-// Variables para el cronómetro
 let cronometroInterval;
 let cronometroTime = 0;
 let isCronometroRunning = false;
 
-// Funciones del cronómetro
 function startCronometro() {
   if (!isCronometroRunning) {
     cronometroInterval = setInterval(() => {
@@ -26,7 +24,6 @@ function resetCronometro() {
   document.getElementById("cronometro").innerText = "00:00:00";
 }
 
-// Temporizador
 let temporizadorInterval;
 let temporizadorTime;
 let isTemporizadorRunning = false;
@@ -34,7 +31,7 @@ let isTemporizadorRunning = false;
 function startTemporizador() {
   if (!isTemporizadorRunning) {
     const userTime = parseInt(document.getElementById("timeInput").value);
-    temporizadorTime = userTime * 60; // Convertir a segundos
+    temporizadorTime = userTime * 60;
 
     temporizadorInterval = setInterval(() => {
       temporizadorTime--;
@@ -59,7 +56,6 @@ function resetTemporizador() {
   document.getElementById("temporizador").innerText = "00:00:00";
 }
 
-// Formato de tiempo (HH:MM:SS)
 function formatTime(seconds) {
   const hrs = Math.floor(seconds / 3600);
   const mins = Math.floor((seconds % 3600) / 60);
@@ -67,7 +63,6 @@ function formatTime(seconds) {
   return `${hrs.toString().padStart(2, "0")}:${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
 }
 
-// Event listeners para los botones del cronómetro
 document
   .getElementById("startCronometro")
   .addEventListener("click", startCronometro);
@@ -78,7 +73,6 @@ document
   .getElementById("resetCronometro")
   .addEventListener("click", resetCronometro);
 
-// Event listeners para los botones del temporizador
 document
   .getElementById("startTemporizador")
   .addEventListener("click", startTemporizador);

@@ -61,33 +61,33 @@ async function buscarClima() {
     switch (icono) {
       case "01d":
       case "01n":
-        return "bg-gradient-to-b from-yellow-200 to-blue-400 text-gray-800"; // clear sky
+        return "bg-gradient-to-b from-yellow-200 to-blue-400 text-gray-800";
       case "02d":
       case "02n":
-        return "bg-gradient-to-b from-blue-200 to-gray-300 text-gray-800"; // few clouds
+        return "bg-gradient-to-b from-blue-200 to-gray-300 text-gray-800";
       case "03d":
       case "03n":
-        return "bg-gradient-to-b from-gray-200 to-gray-400"; // scattered clouds
+        return "bg-gradient-to-b from-gray-200 to-gray-400";
       case "04d":
       case "04n":
-        return "bg-gradient-to-b from-gray-400 to-gray-600"; // broken clouds
+        return "bg-gradient-to-b from-gray-400 to-gray-600";
       case "09d":
       case "09n":
-        return "bg-gradient-to-b from-blue-300 to-gray-500"; // shower rain
+        return "bg-gradient-to-b from-blue-300 to-gray-500";
       case "10d":
       case "10n":
-        return "bg-gradient-to-b from-blue-400 to-gray-700"; // rain
+        return "bg-gradient-to-b from-blue-400 to-gray-700";
       case "11d":
       case "11n":
-        return "bg-gradient-to-b from-gray-700 to-black"; // thunderstorm
+        return "bg-gradient-to-b from-gray-700 to-black";
       case "13d":
       case "13n":
-        return "bg-gradient-to-b from-white to-blue-200"; // snow
+        return "bg-gradient-to-b from-white to-blue-200";
       case "50d":
       case "50n":
-        return "bg-gradient-to-b from-gray-300 to-gray-500"; // mist
+        return "bg-gradient-to-b from-gray-300 to-gray-500";
       default:
-        return "bg-gray-200"; // fallback
+        return "bg-gray-200";
     }
   }
   const fondoClase = obtenerFondoPorIcono(icono);
