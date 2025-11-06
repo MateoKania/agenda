@@ -5,7 +5,7 @@ module.exports = {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
-    "./tailwind-preserve-classes.html",
+    "./tailwindclases.js",
   ],
   theme: {
     extend: {

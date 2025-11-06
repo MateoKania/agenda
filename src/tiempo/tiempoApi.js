@@ -92,7 +92,7 @@ async function buscarClima(event) {
   }
   const fondoClase = obtenerFondoPorIcono(icono);
   const divFondo = document.getElementById("fondoClima");
-  divFondo.className = `mx-auto mt-10 flex h-3/5 w-4/5 rounded-2xl border-2 border-white ${fondoClase}`;
+  divFondo.className = `mx-auto mt-10 flex h-3/5 w-4/5 rounded-2xl border-2 border-white ${fondoClase}@2x.png`;
 
   inputCiudad.value = "";
 }
