@@ -50,11 +50,11 @@ async function buscarClima(event) {
     data.visibility / 1000 + "Km";
 
   const iconoUrl = await fetch(
-    `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`,
+    `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`,
   );
 
   document.getElementById("icono").innerHTML =
-    `<img src="http://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="Icono del tiempo" class="w-40 h-40">`;
+    `<img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="Icono del tiempo" class="w-40 h-40">`;
 
   const icono = data.weather[0].icon;
   function obtenerFondoPorIcono(icono) {
